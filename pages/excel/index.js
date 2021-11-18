@@ -11,7 +11,7 @@ import {
     Typography
 } from "@material-ui/core";
 import Head from "next/head";
-import NavBar from "../../compnents/NavBar";
+import NavBar from "../../components/NavBar";
 
 const useStyles = makeStyles((theme) => ({
     root: {

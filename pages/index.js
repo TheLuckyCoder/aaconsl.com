@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import NavBar from "../compnents/NavBar";
 import React from "react";
+import NavBar from "../components/NavBar";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
             </Head>
 
             <header className={styles.header}>
-                <img src="vercel.svg"/>
+                <img src="vercel.svg" alt="AAConsl"/>
                 <h1 className={styles.title}>
                     Bine ai venit la <font color="#0070f3">A&A Consult!</font>
                 </h1>

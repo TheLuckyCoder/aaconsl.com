@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import NavBar from "../../compnents/NavBar";
+import NavBar from "../../components/NavBar";
 import {Typography} from "@material-ui/core";
 
 export default function Excel({excel}) {
