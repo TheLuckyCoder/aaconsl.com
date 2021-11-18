@@ -8,7 +8,9 @@ export default function Excel({excel}) {
         <NavBar/>
         <main className={'header'}>
             <h1 className={'text-center'}>{excel.name}</h1>
-            <Typography
+            <Typography variant="body1" component="p">
+                {excel.description}
+            </Typography>
             <ReactPlayer url={excel.youtubeUrl}/>
         </main>
     </>)
