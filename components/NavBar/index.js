@@ -66,7 +66,6 @@ export default function NavBar({}) {
                 <li className="nav-item" id="themeButton">
                     <a href="#" className="nav-link">
                         <svg
-                            className="theme-icon"
                             id="lightIcon"
                             aria-hidden="true"
                             focusable="false"
@@ -91,7 +90,6 @@ export default function NavBar({}) {
                             </g>
                         </svg>
                         <svg
-                            className="theme-icon"
                             id="solarIcon"
                             aria-hidden="true"
                             focusable="false"
