@@ -2,6 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 import NavBar from "../../components/NavBar";
 import {Typography} from "@material-ui/core";
+import * as https from "https";
 
 export default function Excel({excel}) {
     return (<>
@@ -16,8 +17,17 @@ export default function Excel({excel}) {
     </>)
 }
 
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false,
+});
+
 export async function getStaticProps({params}) {
-    const req = await fetch('http://localhost:9003/excel/' + params.id);
+    const req = await fetch(
+        'https://razvanrares.go.ro:4009/excel/' + params.id,
+        {
+            agent: httpsAgent
+        }
+    );
     const data = await req.json();
 
     return {
@@ -26,7 +36,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch('http://localhost:9003/excel/');
+    const req = await fetch('https://razvanrares.go.ro:4009/excel/');
     const data = await req.json();
 
     const paths = data.map(excel => {

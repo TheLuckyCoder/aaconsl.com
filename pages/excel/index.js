@@ -51,7 +51,7 @@ export default function ExcelsList({list}) {
                                             {excel.name}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary" component="p">
-                                            {excel.description.substring(0, 180) + "..."}
+                                            {excel.summary}
                                         </Typography>
                                     </CardContent>
                                     <CardActions disableSpacing>
@@ -71,7 +71,7 @@ export default function ExcelsList({list}) {
 }
 
 export async function getStaticProps({}) {
-    const req = await fetch('http://localhost:9003/excel/');
+    const req = await fetch('http://razvanrares.go.ro:4009/excel/');
     const data = await req.json();
 
     return {

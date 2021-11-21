@@ -9,13 +9,10 @@
 }
 
 .header {
-  margin-left: 5rem;
-  background: red;
-  margin-bottom: 1em;
-  padding: 4em;
-  padding-bottom: 6em;
+  background: coral;
+  padding: 4em 4em 8em;
   text-align: center;
-  clip-path: polygon(50% 0, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+  clip-path: polygon(50% 0, 100% 0, 100% 65%, 60% 100%, 40% 100%, 0 65%, 0 0);
 }
 
 .footer {
