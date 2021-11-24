@@ -17,17 +17,8 @@ export default function Excel({excel}) {
     </>)
 }
 
-const httpsAgent = new https.Agent({
-    rejectUnauthorized: false,
-});
-
 export async function getStaticProps({params}) {
-    const req = await fetch(
-        'https://razvanrares.go.ro:4009/excel/' + params.id,
-        {
-            agent: httpsAgent
-        }
-    );
+    const req = await fetch('http://razvanrares.go.ro:4009/excel/' + params.id);
     const data = await req.json();
 
     return {
@@ -36,7 +27,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch('https://razvanrares.go.ro:4009/excel/');
+    const req = await fetch('http://razvanrares.go.ro:4009/excel/');
     const data = await req.json();
 
     const paths = data.map(excel => {

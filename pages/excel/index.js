@@ -5,8 +5,8 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
+    CardMedia,
     Grid,
-    Link,
     makeStyles,
     Typography
 } from "@material-ui/core";
@@ -20,8 +20,9 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     card: {
-        minHeight: "100px",
-        maxHeight: "200px"
+    },
+    media: {
+        height: "160px"
     }
 }));
 
@@ -31,7 +32,7 @@ export default function ExcelsList({list}) {
     return (<div>
         <Head>
             <title>Fișiere Excel</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         </Head>
         <main className={style.root}>
             <Grid container spacing={4}>
@@ -46,9 +47,16 @@ export default function ExcelsList({list}) {
                         >
                             <Card>
                                 <CardActionArea className={style.card} href={"excel/" + excel.id}>
+                                   {/* <CardMedia
+                                        className={style.media}
+                                        image={"https://img.youtube.com/vi/" + excel.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}/>
+*/}
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {excel.name}
+                                        </Typography>
+                                        <Typography gutterBottom variant="overline">
+                                            {(new Date(excel.date)).toLocaleDateString()}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary" component="p">
                                             {excel.summary}
