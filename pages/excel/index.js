@@ -11,6 +11,7 @@ import {
     Typography
 } from "@material-ui/core";
 import Head from "next/head";
+import Image from "next/image";
 import NavBar from "../../components/NavBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
         height: "160px"
     }
 }));
+
+const youtubeLoader = ({ src }) => {
+    return `https://img.youtube.com/vi/${src}/maxresdefault.jpg`
+}
 
 export default function ExcelsList({list}) {
     const style = useStyles();
@@ -47,10 +52,11 @@ export default function ExcelsList({list}) {
                         >
                             <Card>
                                 <CardActionArea className={style.card} href={"excel/" + excel.id}>
-                                   {/* <CardMedia
+                                   <CardMedia
                                         className={style.media}
-                                        image={"https://img.youtube.com/vi/" + excel.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}/>
-*/}
+                                        alt={"Thumbnail"}
+                                        src={"https://img.youtube.com/vi/" + excel.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}/>
+
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {excel.name}

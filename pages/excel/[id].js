@@ -2,7 +2,6 @@ import React from "react";
 import ReactPlayer from "react-player";
 import NavBar from "../../components/NavBar";
 import {Typography} from "@material-ui/core";
-import * as https from "https";
 
 export default function Excel({excel}) {
     return (<>

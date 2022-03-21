@@ -4,6 +4,10 @@ import styles from '../styles/Home.module.css'
 import React from "react";
 import NavBar from "../components/NavBar";
 
+const defaultLoader = ({ src }) => {
+    return src
+}
+
 export default function Home() {
     return (
         <>
@@ -13,7 +17,7 @@ export default function Home() {
             </Head>
 
             <header className={styles.header}>
-                <Image src="/aaconsl.png" width={320} height={320} alt="A&A Consult"/>
+                <Image loader={defaultLoader} src="/aaconsl.webp" width={320} height={320} alt="A&A Consult"/>
                 <h1 className={styles.title}>
                     Bine ai venit la<br/><font color="#0070f3">A&A Consult</font>
                 </h1>
