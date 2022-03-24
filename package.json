@@ -14,7 +14,7 @@
     "@mantine/core": "4.0.7",
     "@mantine/form": "4.0.7",
     "@mantine/hooks": "4.0.7",
-    "@mantine/next": "4.0.7",
+    "@mantine/next": "4.0.8",
     "@types/react": "17.0.42",
     "@types/react-dom": "17.0.14",
     "next": "12.1.0",
