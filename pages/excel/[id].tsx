@@ -32,7 +32,7 @@ function ContactForm(excelProps: ExcelProps) {
                 <TextInput
                     {...form.getInputProps('name')}
                     label="Nume"
-                    placeholder="Numele și prenumele Dumneavoastră"
+                    placeholder="Numele și prenumele dumneavoastră"
                     minLength={8}
                     maxLength={30}
                     required

@@ -14,7 +14,7 @@ function CardItem(excelProps: ExcelProps) {
 
     return (
         <div style={{width: 340, margin: 'auto'}}>
-            <Card shadow="sm" p="lg">
+            <Card shadow="md" p="lg">
                 <Card.Section>
                     <Image
                         src={"https://img.youtube.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}
@@ -42,27 +42,29 @@ function CardItem(excelProps: ExcelProps) {
 }
 
 export default function ExcelsList({list}) {
-    return (<div>
-        <Head>
-            <title>Fișiere Excel</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-        </Head>
+    return (
+        <>
+            <Head>
+                <title>Fișiere Excel</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+            </Head>
 
-        <SimpleGrid
-            cols={6}
-            spacing="lg"
-            breakpoints={[
-                {maxWidth: 'md', cols: 3, spacing: 'md'},
-                {maxWidth: 'sm', cols: 2, spacing: 'sm'},
-                {maxWidth: 'xs', cols: 1, spacing: 'sm'},
-            ]}
-        >
-            {list.map((excelProps) => {
-                return (<CardItem {...excelProps} key={excelProps.id}/>);
-            })}
-        </SimpleGrid>
+            <SimpleGrid
+                cols={1}
+                breakpoints={[
+                    {minWidth: 1800, cols: 5},
+                    {minWidth: 1480, cols: 4},
+                    {minWidth: 1100, cols: 3},
+                    {minWidth: 740, cols: 2},
+                ]}
+            >
+                {list.map((excelProps) => {
+                    return (<CardItem {...excelProps} key={excelProps.id}/>);
+                })}
+            </SimpleGrid>
 
-    </div>);
+        </>
+    );
 }
 
 export async function getStaticProps({}) {

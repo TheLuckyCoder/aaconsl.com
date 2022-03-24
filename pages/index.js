@@ -1,16 +1,14 @@
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React from "react";
-
-const defaultLoader = ({src}) => {
-    return src
-}
+import {Image} from "@mantine/core";
 
 export default function Home() {
     return (
         <>
             <header className={styles.header}>
-                <Image loader={defaultLoader} src="/aaconsl.webp" width={320} height={320} alt="A&A Consult"/>
+                <div style={{ width: 320, marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Image src="/aaconsl.webp" width={320} height={320} alt="A&A Consult"/>
+                </div>
                 <h1 className={styles.title}>
                     Bine ai venit la<br/><font color="#0070f3">A&A Consult</font>
                 </h1>
