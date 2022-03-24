@@ -44,14 +44,14 @@ body::-webkit-scrollbar-thumb {
   background: #6649b8;
 }
 
-header {
+/*header {
   margin-left: 5rem;
 }
 
 main {
   margin-left: 5rem;
   padding: 1rem;
-}
+}*/
 
 .navbar {
   position: fixed;

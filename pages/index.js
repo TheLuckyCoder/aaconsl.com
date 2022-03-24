@@ -1,8 +1,6 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React from "react";
-import NavBar from "../components/NavBar";
 
 const defaultLoader = ({ src }) => {
     return src
@@ -11,19 +9,12 @@ const defaultLoader = ({ src }) => {
 export default function Home() {
     return (
         <>
-            <Head>
-                <title>A&A Consult</title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-
             <header className={styles.header}>
                 <Image loader={defaultLoader} src="/aaconsl.webp" width={320} height={320} alt="A&A Consult"/>
                 <h1 className={styles.title}>
                     Bine ai venit la<br/><font color="#0070f3">A&A Consult</font>
                 </h1>
             </header>
-
-            <NavBar/>
 
             <main className={styles.main}>
 
