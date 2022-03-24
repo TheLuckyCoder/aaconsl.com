@@ -13,7 +13,7 @@
   "dependencies": {
     "@mantine/core": "4.0.7",
     "@mantine/form": "4.0.7",
-    "@mantine/hooks": "4.0.7",
+    "@mantine/hooks": "4.0.8",
     "@mantine/next": "4.0.7",
     "@types/react": "17.0.42",
     "@types/react-dom": "17.0.14",
