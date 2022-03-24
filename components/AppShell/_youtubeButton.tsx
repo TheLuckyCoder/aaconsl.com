@@ -14,7 +14,7 @@ export default function YoutubeButton() {
                 onClick={() => router.push("https://www.youtube.com/channel/UCfAM-JzTYmKFsNQRJRgby_Q")}
                 title="Canalul de YouTube"
             >
-                <BrandYoutube size={18} />
+                <BrandYoutube size={18}/>
             </ActionIcon>
         </>
     )

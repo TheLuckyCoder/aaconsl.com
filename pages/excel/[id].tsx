@@ -1,17 +1,12 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import ReactPlayer from "react-player";
 import {Box, Button, Grid, Group, Space, Text, Textarea, TextInput, Title} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
-import {At, BrandSublimeText} from "tabler-icons-react";
 import {useForm} from "@mantine/form";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 function ContactForm(excelProps: ExcelProps) {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-
     const form = useForm({
         initialValues: {
             name: '',
@@ -25,10 +20,13 @@ function ContactForm(excelProps: ExcelProps) {
     });
 
     return (
-        <Box sx={{ maxWidth: 600 }} mx="auto">
+        <Box sx={{maxWidth: 600}} mx="auto">
+            <Space h="xl"/>
             <Space h="xl"/>
 
             <Text>Dacă doriți acces la acest fișier vă rugăm să ne contactați folosind formularul de mai jos:</Text>
+
+            <Space h="xs"/>
 
             <form onSubmit={form.onSubmit((values) => console.log(values))}>
                 <TextInput

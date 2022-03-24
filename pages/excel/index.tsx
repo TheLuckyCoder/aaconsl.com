@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import {Badge, Card, Group, useMantineTheme, Text, Button, Image, Grid, SimpleGrid} from "@mantine/core";
+import {Badge, Button, Card, Group, Image, SimpleGrid, Text, useMantineTheme} from "@mantine/core";
 import {useRouter} from "next/router";
 import {ExcelProps} from "../../model/ExcelProps";
 

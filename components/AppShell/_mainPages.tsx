@@ -10,7 +10,7 @@ interface MainLinkProps {
     link: string;
 }
 
-function MainLink({ icon, color, label, link }: MainLinkProps) {
+function MainLink({icon, color, label, link}: MainLinkProps) {
     const router = useRouter()
 
     return (
@@ -41,12 +41,12 @@ function MainLink({ icon, color, label, link }: MainLinkProps) {
 }
 
 const data = [
-    { icon: <Home size={16} />, color: 'blue', label: 'Acasă', link: '/' },
-    { icon: <FileSpreadsheet size={16} />, color: 'teal', label: 'Excel', link: '/excel' },
-    { icon: <Mail size={16} />, color: 'orange', label: 'Contact', link: '/contact' },
+    {icon: <Home size={16}/>, color: 'blue', label: 'Acasă', link: '/'},
+    {icon: <FileSpreadsheet size={16}/>, color: 'teal', label: 'Excel', link: '/excel'},
+    {icon: <Mail size={16}/>, color: 'orange', label: 'Contact', link: '/contact'},
 ];
 
 export function MainLinks() {
-    const links = data.map((link) => <MainLink {...link} key={link.label} />);
+    const links = data.map((link) => <MainLink {...link} key={link.label}/>);
     return <Group noWrap={true}>{links}</Group>;
 }
