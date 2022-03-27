@@ -1,10 +1,12 @@
 import React from 'react';
 import {AppShell, Avatar, Button, Group, Header, Text, Title} from '@mantine/core';
 import LightAndDarkModeButton from "../LightAndDarkModeButton";
-import {MainLinks} from "./_mainPages";
+import MainLinks from "./_mainLinks";
 import YoutubeButton from "./_youtubeButton";
+import styles from './MyAppShell.module.css'
 
-function MyAppShell({children}) {
+export default function MyAppShell({children}) {
+
     return (
         <AppShell
             // navbarOffsetBreakpoint controls when navbar should no longer be offset with padding-left
@@ -16,7 +18,8 @@ function MyAppShell({children}) {
                     {/* Handle other responsive styles with MediaQuery component or createStyles function */}
                     <div style={{display: 'flex', alignItems: 'center', height: '100%'}}>
                         <Group align={"center"}>
-                            <Title order={4}>A&A Consult</Title>
+                            <Title order={4} className={styles.title}>A&A Consult</Title>
+
                             <div style={{marginRight: '1em'}}>
                                 <Avatar
                                     src="/aaconsl.webp"
@@ -44,5 +47,3 @@ function MyAppShell({children}) {
         </AppShell>
     );
 }
-
-export default MyAppShell;

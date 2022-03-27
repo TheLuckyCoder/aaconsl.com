@@ -1,6 +1,18 @@
 import React from "react";
 import Head from "next/head";
-import {Badge, Button, Card, Group, Image, SimpleGrid, Text, useMantineTheme} from "@mantine/core";
+import {
+    AspectRatio,
+    Badge,
+    Button,
+    Card,
+    Group,
+    Image,
+    SimpleGrid,
+    Space,
+    Text,
+    Title,
+    useMantineTheme
+} from "@mantine/core";
 import {useRouter} from "next/router";
 import {ExcelProps} from "../../model/ExcelProps";
 
@@ -14,17 +26,19 @@ function CardItem(excelProps: ExcelProps) {
 
     return (
         <div style={{width: 340, margin: 'auto'}}>
-            <Card shadow="md" p="lg">
+            <Card shadow="xl" p="lg" radius="md">
                 <Card.Section>
-                    <Image
-                        src={"https://img.youtube.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}
-                        alt=""/>
+                    <AspectRatio ratio={1280 / 720}>
+                        <Image
+                            src={"https://img.youtube.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}
+                            alt=""/>
+                    </AspectRatio>
                 </Card.Section>
 
                 <Group position="apart" style={{marginBottom: 5, marginTop: theme.spacing.sm}}>
                     <Text weight={500}>{excelProps.name}</Text>
                     <Badge color="pink" variant="light">
-                        {(new Date(excelProps.date)).toLocaleDateString()}
+                        {(new Date(excelProps.date)).toLocaleDateString('ro-RO')}
                     </Badge>
                 </Group>
 
@@ -45,9 +59,15 @@ export default function ExcelsList({list}) {
     return (
         <>
             <Head>
-                <title>Fișiere Excel</title>
+                <title>Fișiere Excel - A&A Consult</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
             </Head>
+
+            <Title>Fișiere Excel</Title>
+
+            <Text>Pentru a primi un fișier de mai jos, accesați formularul de pe pagina acestuia.</Text>
+
+            <Space h="xs"/>
 
             <SimpleGrid
                 cols={1}

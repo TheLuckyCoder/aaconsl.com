@@ -1,7 +1,7 @@
-import {Box, Group, Space, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
+import {Group, SimpleGrid, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
 import React from "react";
 import {useClipboard} from "@mantine/hooks";
-import {Location, Mail, MapPin, Phone} from "tabler-icons-react";
+import {Check, Copy, Mail, MapPin, Phone} from "tabler-icons-react";
 
 interface ContactInfoProps {
     icon: React.ReactNode;
@@ -10,13 +10,21 @@ interface ContactInfoProps {
     content: string;
 }
 
+function CopyIcon({isCopied}) {
+    if (isCopied) {
+        return (<Check size={18}/>);
+    }
+
+    return (<Copy size={18}/>);
+}
+
 function ContactInfoLabel(props: ContactInfoProps) {
-    const clipboard = useClipboard({timeout: 500});
+    const clipboard = useClipboard({timeout: 4000});
 
     return (
         <Tooltip
             radius="md"
-            label={"Copiază: " + props.content}
+            label={"Click pentru copia: " + props.content}
             openDelay={250}
             withArrow
         >
@@ -40,7 +48,10 @@ function ContactInfoLabel(props: ContactInfoProps) {
                         {props.icon}
                     </ThemeIcon>
 
-                    <Text size="sm">{props.label + ': ' + props.content}</Text>
+                    <Text size="md">{props.label + ': '}</Text>
+                    <Text size="md" color={"blue"}>{props.content}</Text>
+
+                    <CopyIcon isCopied={clipboard.copied}/>
                 </Group>
             </UnstyledButton>
         </Tooltip>
@@ -48,9 +59,9 @@ function ContactInfoLabel(props: ContactInfoProps) {
 }
 
 const data: ContactInfoProps[] = [
-    {icon: <Phone size={18}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
-    {icon: <Mail size={18}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
-    {icon: <MapPin size={18}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15'}
+    {icon: <Phone size={28}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
+    {icon: <Mail size={28}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
+    {icon: <MapPin size={28}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
 ];
 
 function ContactInfoLabels() {
@@ -58,15 +69,19 @@ function ContactInfoLabels() {
     return <Group direction="column" noWrap={true}>{labels}</Group>;
 }
 
+// TODO Move map to the right
 export default function Contact() {
     return (
-        <Box sx={{maxWidth: 600}} mx="auto">
+        <SimpleGrid
+            cols={1}
+            spacing="xl"
+            breakpoints={[
+                {minWidth: 1260, cols: 2, spacing: 'md'},
+            ]}>
             <ContactInfoLabels/>
-
-            <Space h="xl"/>
 
             <iframe width="600" height="450" loading="lazy" allowFullScreen
                     src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
-        </Box>
-    )
+        </SimpleGrid>
+    );
 }

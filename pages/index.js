@@ -1,14 +1,14 @@
 import styles from '../styles/Home.module.css'
 import React from "react";
-import {Image} from "@mantine/core";
+import {AspectRatio, Image} from "@mantine/core";
 
 export default function Home() {
     return (
         <>
             <header className={styles.header}>
-                <div style={{ width: 320, marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Image src="/aaconsl.webp" width={320} height={320} alt="A&A Consult"/>
-                </div>
+                <AspectRatio ratio={1} sx={{ maxWidth: 300 }} mx={"auto"}>
+                    <Image src="/aaconsl.webp" width={300} height={300} alt="A&A Consult"/>
+                </AspectRatio>
                 <h1 className={styles.title}>
                     Bine ai venit la<br/><font color="#0070f3">A&A Consult</font>
                 </h1>
