@@ -1,6 +1,6 @@
 import {Group, SimpleGrid, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
 import React from "react";
-import {useClipboard} from "@mantine/hooks";
+import {useClipboard, useViewportSize} from "@mantine/hooks";
 import {Check, Copy, Mail, MapPin, Phone} from "tabler-icons-react";
 
 interface ContactInfoProps {
@@ -10,7 +10,7 @@ interface ContactInfoProps {
     content: string;
 }
 
-function CopyIcon({isCopied}) {
+function CopyIcon({isCopied}): JSX.Element {
     if (isCopied) {
         return (<Check size={18}/>);
     }
@@ -18,7 +18,7 @@ function CopyIcon({isCopied}) {
     return (<Copy size={18}/>);
 }
 
-function ContactInfoLabel(props: ContactInfoProps) {
+function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
     const clipboard = useClipboard({timeout: 4000});
 
     return (
@@ -70,7 +70,9 @@ function ContactInfoLabels() {
 }
 
 // TODO Move map to the right
-export default function Contact() {
+export default function Contact(): JSX.Element {
+    const {width} = useViewportSize();
+
     return (
         <SimpleGrid
             cols={1}
@@ -80,7 +82,7 @@ export default function Contact() {
             ]}>
             <ContactInfoLabels/>
 
-            <iframe width="600" height="450" loading="lazy" allowFullScreen
+            <iframe width={Math.min(630, width) - 30} height="450" loading="lazy" allowFullScreen
                     src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
         </SimpleGrid>
     );
