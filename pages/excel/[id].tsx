@@ -6,7 +6,7 @@ import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
 import {useViewportSize} from "@mantine/hooks";
 
-const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
 enum FileRequestState {
     None,
@@ -133,7 +133,7 @@ export default function Excel({excelProps}): JSX.Element {
                 md={2}
                 lg={1}
             >
-                <Text component="p" weight={3}>{excelProps.description}</Text>
+                <Text component="p" weight={3} className="display-linebreak">{excelProps.description}</Text>
             </Grid.Col>
 
             <Grid.Col

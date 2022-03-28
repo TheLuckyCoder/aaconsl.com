@@ -44,7 +44,7 @@ function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
                 })}
             >
                 <Group noWrap={true}>
-                    <ThemeIcon color={props.color} variant="light">
+                    <ThemeIcon size="lg" color={props.color} variant="light">
                         {props.icon}
                     </ThemeIcon>
 
@@ -59,9 +59,9 @@ function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
 }
 
 const data: ContactInfoProps[] = [
-    {icon: <Phone size={28}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
-    {icon: <Mail size={28}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
-    {icon: <MapPin size={28}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
+    {icon: <Phone size={24}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
+    {icon: <Mail size={24}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
+    {icon: <MapPin size={24}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
 ];
 
 function ContactInfoLabels() {

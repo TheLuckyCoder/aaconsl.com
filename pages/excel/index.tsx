@@ -30,7 +30,7 @@ function CardItem(excelProps: ExcelProps) {
                 <Card.Section>
                     <AspectRatio ratio={1280 / 720}>
                         <Image
-                            src={"https://img.youtube.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/maxresdefault.jpg"}
+                            src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
                             alt=""/>
                     </AspectRatio>
                 </Card.Section>
