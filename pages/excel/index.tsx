@@ -31,7 +31,7 @@ function CardItem(excelProps: ExcelProps) {
                     <AspectRatio ratio={1280 / 720}>
                         <Image
                             src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
-                            alt=""/>
+                            alt="" imageProps={{ "loading": "lazy" }}/>
                     </AspectRatio>
                 </Card.Section>
 
@@ -67,7 +67,7 @@ export default function ExcelsList({list}) {
 
             <Text>Pentru a primi un fișier de mai jos, accesați formularul de pe pagina acestuia.</Text>
 
-            <Space h="xs"/>
+            <Space h="md"/>
 
             <SimpleGrid
                 cols={1}

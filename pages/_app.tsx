@@ -8,7 +8,7 @@ import {useColorScheme, useHotkeys, useLocalStorage} from "@mantine/hooks";
 function MyApp({Component, pageProps}) {
     const preferredColorScheme = useColorScheme();
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-        key: 'mantine-color-scheme',
+        key: 'color-scheme',
         defaultValue: preferredColorScheme,
     });
     const toggleColorScheme = (value?: ColorScheme) =>

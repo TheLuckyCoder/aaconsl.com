@@ -82,7 +82,7 @@ export default function Contact(): JSX.Element {
             ]}>
             <ContactInfoLabels/>
 
-            <iframe width={Math.min(630, width) - 30} height="450" loading="lazy" allowFullScreen
+            <iframe width={Math.min(600 + 30, width) - 30} height="450" loading="lazy" allowFullScreen
                     src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
         </SimpleGrid>
     );
