@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppShell, Avatar, Button, Group, Header, Text, Title} from '@mantine/core';
+import {AppShell, Group, Header, Title, Image} from '@mantine/core';
 import LightAndDarkModeButton from "../LightAndDarkModeButton";
 import MainLinks from "./_mainLinks";
 import YoutubeButton from "./_youtubeButton";
@@ -21,10 +21,11 @@ export default function MyAppShell({children}) {
                             <Title order={4} className={styles.title}>A&A Consult</Title>
 
                             <div style={{marginRight: '1em'}}>
-                                <Avatar
+                                <Image
                                     src="/aaconsl.webp"
-                                    radius={0}
                                     alt=""
+                                    width={36}
+                                    height={36}
                                 />
                             </div>
                         </Group>
