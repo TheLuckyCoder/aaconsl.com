@@ -2,6 +2,7 @@ import React from 'react';
 import {FileSpreadsheet, Home, Mail} from 'tabler-icons-react';
 import {Group, Text, ThemeIcon, UnstyledButton} from '@mantine/core';
 import {useRouter} from "next/router";
+import styles from './MyAppShell.module.css'
 
 interface MainLinkProps {
     icon: React.ReactNode;
@@ -10,7 +11,7 @@ interface MainLinkProps {
     link: string;
 }
 
-function MainLink({ icon, color, label, link }: MainLinkProps) {
+function MainLink({icon, color, label, link}: MainLinkProps) {
     const router = useRouter()
 
     return (
@@ -19,8 +20,9 @@ function MainLink({ icon, color, label, link }: MainLinkProps) {
             sx={(theme) => ({
                 display: 'block',
                 width: '100%',
+                height: '70px',
                 padding: theme.spacing.xs,
-                borderRadius: theme.radius.sm,
+                borderRadius: 0,
                 color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
 
                 '&:hover': {
@@ -30,23 +32,23 @@ function MainLink({ icon, color, label, link }: MainLinkProps) {
             })}
         >
             <Group noWrap={true}>
-                <ThemeIcon color={color} variant="light">
+                <ThemeIcon color={color} size="lg">
                     {icon}
                 </ThemeIcon>
 
-                <Text size="sm">{label}</Text>
+                <Text size="md" className={styles.mainLinksText}>{label}</Text>
             </Group>
         </UnstyledButton>
     );
 }
 
 const data = [
-    { icon: <Home size={16} />, color: 'blue', label: 'Acasă', link: '/' },
-    { icon: <FileSpreadsheet size={16} />, color: 'teal', label: 'Excel', link: '/excel' },
-    { icon: <Mail size={16} />, color: 'orange', label: 'Contact', link: '/contact' },
+    {icon: <Home size={20}/>, color: 'blue', label: 'Acasă', link: '/'},
+    {icon: <FileSpreadsheet size={20}/>, color: 'teal', label: 'Excel', link: '/excel'},
+    {icon: <Mail size={20}/>, color: 'orange', label: 'Contact', link: '/contact'},
 ];
 
-export function MainLinks() {
-    const links = data.map((link) => <MainLink {...link} key={link.label} />);
+export default function MainLinks() {
+    const links = data.map((link) => <MainLink {...link} key={link.label}/>);
     return <Group noWrap={true}>{links}</Group>;
 }

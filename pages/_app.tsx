@@ -1,13 +1,20 @@
 import '../styles/globals.css'
 import Head from 'next/head';
 import MyAppShell from "../components/AppShell";
-import React, {useState} from "react";
+import React from "react";
 import {ColorScheme, ColorSchemeProvider, MantineProvider, Paper} from '@mantine/core';
+import {useColorScheme, useHotkeys, useLocalStorage} from "@mantine/hooks";
 
 function MyApp({Component, pageProps}) {
-    const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-    const toggleColorScheme = (value) =>
+    const preferredColorScheme = useColorScheme();
+    const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+        key: 'mantine-color-scheme',
+        defaultValue: preferredColorScheme,
+    });
+    const toggleColorScheme = (value?: ColorScheme) =>
         setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+
+    useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
     // @ts-ignore
     return (
