@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import ReactPlayer from "react-player";
 import {Box, Button, Grid, Group, LoadingOverlay, Space, Text, Textarea, TextInput, Title} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
 import {useViewportSize} from "@mantine/hooks";
+import * as https from "https";
+import YouTubePlayer from "react-player/youtube";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -19,15 +20,27 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
     const body = {
         fileId, name, email, message
     }
-    // console.log(body)
+    console.log(body)
 
-    const response = await fetch("http://razvanrares.go.ro:4009/request", {
-        method: 'post',
+    const httpsAgent = new https.Agent({
+        rejectUnauthorized: false,
+    });
+
+    const response = fetch("https://razvanrares.go.ro:4010/request", {
+        method: 'POST',
         body: JSON.stringify(body),
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        // @ts-ignore
+        agent: httpsAgent,
     })
-    console.log("Response on file request", response.json())
-    return response.ok
+        .then(() => {
+            return true
+        })
+        .catch(() => {
+            return false;
+        })
+
+    return await response
 }
 
 function ContactForm(excelProps: ExcelProps): JSX.Element {
@@ -50,59 +63,62 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
             <Space h="xl"/>
             <Space h="xl"/>
 
-            <Text>Dacă doriți acces la acest fișier vă rugăm să ne contactați folosind formularul de mai jos:</Text>
-
-            <Space h="xs"/>
-
             {(requestState == FileRequestState.None || requestState == FileRequestState.Loading) &&
-                <form style={{position: 'relative'}} onSubmit={
-                    form.onSubmit((values) => {
-                        setRequestState(FileRequestState.Loading)
-                        sendContactRequest(excelProps.id, values).then(ok => setRequestState(ok ? FileRequestState.Success : FileRequestState.Failed))
-                    })}>
-
-                    <TextInput
-                        {...form.getInputProps('name')}
-                        label="Nume"
-                        placeholder="Numele și prenumele dumneavoastră"
-                        minLength={8}
-                        maxLength={30}
-                        icon={<AddressBook size={14}/>}
-                        required
-                    />
+                <>
+                    <Text>Dacă doriți acces la acest fișier vă rugăm să ne contactați folosind formularul de mai
+                        jos:</Text>
 
                     <Space h="xs"/>
 
-                    <TextInput
-                        {...form.getInputProps('email')}
-                        placeholder="mail@example.com"
-                        label="Adresă Email"
-                        icon={<At size={14}/>}
-                        required
-                    />
+                    <form style={{position: 'relative'}} onSubmit={
+                        form.onSubmit((values) => {
+                            setRequestState(FileRequestState.Loading)
+                            sendContactRequest(excelProps.id, values).then(ok => setRequestState(ok ? FileRequestState.Success : FileRequestState.Failed))
+                        })}>
 
-                    <Space h="xs"/>
+                        <TextInput
+                            {...form.getInputProps('name')}
+                            label="Nume"
+                            placeholder="Numele și prenumele dumneavoastră"
+                            minLength={8}
+                            maxLength={30}
+                            icon={<AddressBook size={14}/>}
+                            required
+                        />
 
-                    <Textarea
-                        {...form.getInputProps('message')}
-                        label="Mesaj"
-                        placeholder="De ce doriți acest fișier"
-                        autosize
-                        minRows={2}
-                        minLength={10}
-                        maxLength={1000}
-                        required
-                    />
+                        <Space h="xs"/>
 
-                    <LoadingOverlay
-                        visible={requestState == FileRequestState.Loading}
-                        loaderProps={{color: 'green', variant: 'bars'}}/>
+                        <TextInput
+                            {...form.getInputProps('email')}
+                            placeholder="mail@example.com"
+                            label="Adresă Email"
+                            icon={<At size={14}/>}
+                            required
+                        />
 
-                    <Group position="right" mt="md">
-                        <Button type="submit">Trimite</Button>
-                    </Group>
+                        <Space h="xs"/>
 
-                </form>
+                        <Textarea
+                            {...form.getInputProps('message')}
+                            label="Mesaj"
+                            placeholder="De ce doriți acest fișier"
+                            autosize
+                            minRows={2}
+                            minLength={10}
+                            maxLength={1000}
+                            required
+                        />
+
+                        <LoadingOverlay
+                            visible={requestState == FileRequestState.Loading}
+                            loaderProps={{color: 'green', variant: 'bars'}}/>
+
+                        <Group position="right" mt="md">
+                            <Button type="submit">Trimite</Button>
+                        </Group>
+
+                    </form>
+                </>
             }
 
             {requestState == FileRequestState.Success &&
@@ -141,7 +157,7 @@ export default function Excel({excelProps}): JSX.Element {
                 sm={2}
                 md={1}
             >
-                <ReactPlayer width={reactPlayerWidth} url={excelProps.youtubeUrl}/>
+                <YouTubePlayer width={reactPlayerWidth} url={excelProps.youtubeUrl}/>
             </Grid.Col>
         </Grid>
 

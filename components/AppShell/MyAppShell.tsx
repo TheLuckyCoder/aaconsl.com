@@ -22,7 +22,7 @@ export default function MyAppShell({children}) {
 
                             <div style={{marginRight: '1em'}}>
                                 <Image
-                                    src="/aaconsl.webp"
+                                    src="/aaconsl_x256.webp"
                                     alt=""
                                     width={36}
                                     height={36}

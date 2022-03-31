@@ -31,7 +31,7 @@ function CardItem(excelProps: ExcelProps) {
                     <AspectRatio ratio={1280 / 720}>
                         <Image
                             src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
-                            alt=""/>
+                            alt="" imageProps={{ "loading": "lazy" }}/>
                     </AspectRatio>
                 </Card.Section>
 
@@ -67,7 +67,7 @@ export default function ExcelsList({list}) {
 
             <Text>Pentru a primi un fișier de mai jos, accesați formularul de pe pagina acestuia.</Text>
 
-            <Space h="xs"/>
+            <Space h="md"/>
 
             <SimpleGrid
                 cols={1}
@@ -90,6 +90,8 @@ export default function ExcelsList({list}) {
 export async function getStaticProps({}) {
     const req = await fetch('http://razvanrares.go.ro:4009/excel/');
     const data: ExcelProps[] = await req.json();
+    // @ts-ignore
+    data.sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return {
         props: {list: data},
