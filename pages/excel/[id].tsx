@@ -167,7 +167,7 @@ export default function Excel({excelProps}): JSX.Element {
                 lg={1}
             >
                 <AspectRatio ratio={1980 / 1080}>
-                    <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+                    <iframe id="ytplayer" width="100%" height="100%"
                             src={"https://www.youtube.com/embed/" + link + "?origin=https://aaconsl.com"}
                             frameBorder="0"></iframe>
                 </AspectRatio>
