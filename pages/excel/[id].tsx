@@ -1,11 +1,21 @@
 import React, {useState} from "react";
-import {Box, Button, Grid, Group, LoadingOverlay, Space, Text, Textarea, TextInput, Title} from "@mantine/core";
+import {
+    AspectRatio,
+    Box,
+    Button,
+    Grid,
+    Group,
+    LoadingOverlay,
+    Space,
+    Text,
+    Textarea,
+    TextInput,
+    Title
+} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
-import {useViewportSize} from "@mantine/hooks";
 import * as https from "https";
-import YouTubePlayer from "react-player/youtube";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -20,7 +30,6 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
     const body = {
         fileId, name, email, message
     }
-    console.log(body)
 
     const httpsAgent = new https.Agent({
         rejectUnauthorized: false,
@@ -136,28 +145,32 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
 }
 
 export default function Excel({excelProps}): JSX.Element {
-    const {width} = useViewportSize()
-    const reactPlayerWidth = Math.min(width, 720 + 30) - 30
+    const link = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
 
     return (<>
         <Title className={'text-center'}>{excelProps.name}</Title>
 
-        <Grid justify="center" columns={2} grow={true}>
+        <Grid justify="center" columns={2}>
             <Grid.Col
                 xs={2}
                 sm={2}
                 md={2}
                 lg={1}
             >
-                <Text component="p" weight={3} className="display-linebreak">{excelProps.description}</Text>
+                <Text weight={3}>{excelProps.description}</Text>
             </Grid.Col>
 
             <Grid.Col
                 xs={2}
                 sm={2}
-                md={1}
+                md={2}
+                lg={1}
             >
-                <YouTubePlayer width={reactPlayerWidth} url={excelProps.youtubeUrl}/>
+                <AspectRatio ratio={1980 / 1080}>
+                    <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+                            src={"https://www.youtube.com/embed/" + link + "?origin=https://aaconsl.com"}
+                            frameBorder="0"></iframe>
+                </AspectRatio>
             </Grid.Col>
         </Grid>
 
