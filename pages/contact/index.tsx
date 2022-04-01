@@ -1,6 +1,6 @@
 import {Group, SimpleGrid, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
 import React from "react";
-import {useClipboard, useViewportSize} from "@mantine/hooks";
+import {useClipboard} from "@mantine/hooks";
 import {Check, Copy, Mail, MapPin, Phone} from "tabler-icons-react";
 
 interface ContactInfoProps {
@@ -71,7 +71,6 @@ function ContactInfoLabels() {
 
 // TODO Move map to the right
 export default function Contact(): JSX.Element {
-    const {width} = useViewportSize();
 
     return (
         <SimpleGrid
@@ -82,8 +81,10 @@ export default function Contact(): JSX.Element {
             ]}>
             <ContactInfoLabels/>
 
-            <iframe width={Math.min(600 + 30, width) - 30} height="450" loading="lazy" allowFullScreen
-                    src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
+            <div style={{maxWidth: 680}}>
+                <iframe width="98%" height="450" loading="lazy" allowFullScreen
+                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
+            </div>
         </SimpleGrid>
     );
 }
