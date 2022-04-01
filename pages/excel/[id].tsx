@@ -3,9 +3,6 @@ import {Box, Button, Grid, Group, LoadingOverlay, Space, Text, Textarea, TextInp
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
-import {useViewportSize} from "@mantine/hooks";
-import * as https from "https";
-import YouTubePlayer from "react-player/youtube";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -136,13 +133,13 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
 }
 
 export default function Excel({excelProps}): JSX.Element {
-    const {width} = useViewportSize()
-    const reactPlayerWidth = Math.min(width, 720 + 30) - 30
+    const link = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
+    console.log(link)
 
     return (<>
         <Title className={'text-center'}>{excelProps.name}</Title>
 
-        <Grid justify="center" columns={2} grow={true}>
+        <Grid justify="center" columns={2}>
             <Grid.Col
                 xs={2}
                 sm={2}
@@ -155,9 +152,12 @@ export default function Excel({excelProps}): JSX.Element {
             <Grid.Col
                 xs={2}
                 sm={2}
-                md={1}
+                md={2}
+                lg={1}
             >
-                <YouTubePlayer width={reactPlayerWidth} url={excelProps.youtubeUrl}/>
+                <iframe id="ytplayer" type="text/html" width="640" height="360"
+                        src={"https://www.youtube.com/embed/" + link + "?origin=https://aaconsl.com" }
+                        frameBorder="0"></iframe>
             </Grid.Col>
         </Grid>
 
