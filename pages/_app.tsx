@@ -1,22 +1,26 @@
 import '../styles/globals.css'
 import Head from 'next/head';
 import MyAppShell from "../components/AppShell";
-import React from "react";
+import React, {useState} from "react";
+import {getCookie, setCookies} from 'cookies-next';
 import {ColorScheme, ColorSchemeProvider, MantineProvider, Paper} from '@mantine/core';
-import {useColorScheme, useHotkeys, useLocalStorage} from "@mantine/hooks";
+import {useHotkeys} from "@mantine/hooks";
+import {AppProps} from "next/app";
+import {GetServerSidePropsContext} from "next";
 
-function MyApp({Component, pageProps}) {
-    const preferredColorScheme = useColorScheme();
-    const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-        key: 'color-scheme',
-        defaultValue: preferredColorScheme,
-    });
-    const toggleColorScheme = (value?: ColorScheme) =>
-        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
+    const { Component, pageProps } = props;
+    const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
+
+    const toggleColorScheme = (value?: ColorScheme) => {
+        const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+        setColorScheme(nextColorScheme);
+        // when color scheme is updated save it to cookie
+        setCookies('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+    };
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
-    // @ts-ignore
     return (
         <>
             <Head>
@@ -46,4 +50,7 @@ function MyApp({Component, pageProps}) {
     );
 }
 
-export default MyApp
+MyApp.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+    // get color scheme from cookie
+    colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+});
