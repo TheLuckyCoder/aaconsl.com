@@ -141,7 +141,7 @@ export default function Excel({excelProps}): JSX.Element {
     const videoId = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
 
     return (<>
-        <Title className={'text-center'}>{excelProps.name}</Title>
+        <Title>{excelProps.name}</Title>
 
         <Grid justify="center" columns={2}>
             <Grid.Col
@@ -150,7 +150,7 @@ export default function Excel({excelProps}): JSX.Element {
                 md={2}
                 lg={1}
             >
-                <Text weight={3}>{excelProps.description}</Text>
+                <Text weight={3} className={'display-linebreak'}>{excelProps.description}</Text>
             </Grid.Col>
 
             <Grid.Col
