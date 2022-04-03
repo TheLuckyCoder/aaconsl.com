@@ -90,8 +90,8 @@ export default function ExcelsList({list}) {
 export async function getStaticProps({}) {
     const req = await fetch('http://razvanrares.go.ro:4009/excel/');
     const data: ExcelProps[] = await req.json();
-    // @ts-ignore
-    data.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+    data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
 
     return {
         props: {list: data},
