@@ -15,7 +15,6 @@ import {
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
-import * as https from "https";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -31,16 +30,10 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
         fileId, name, email, message
     }
 
-    const httpsAgent = new https.Agent({
-        rejectUnauthorized: false,
-    });
-
     const response = fetch("https://razvanrares.go.ro:4010/request", {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
-        // @ts-ignore
-        agent: httpsAgent,
     })
         .then(() => {
             return true
@@ -145,7 +138,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
 }
 
 export default function Excel({excelProps}): JSX.Element {
-    const link = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
+    const videoId = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
 
     return (<>
         <Title className={'text-center'}>{excelProps.name}</Title>
@@ -168,7 +161,7 @@ export default function Excel({excelProps}): JSX.Element {
             >
                 <AspectRatio ratio={1980 / 1080}>
                     <iframe id="ytplayer" width="100%" height="100%"
-                            src={"https://www.youtube.com/embed/" + link + "?origin=https://aaconsl.com"}
+                            src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
                             frameBorder="0"></iframe>
                 </AspectRatio>
             </Grid.Col>
@@ -190,6 +183,8 @@ export async function getStaticProps({params}) {
 export async function getStaticPaths() {
     const req = await fetch('http://razvanrares.go.ro:4009/excel/');
     const data: ExcelProps[] = await req.json();
+
+    data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
 
     const paths = data.map(excelProps => {
         return {params: {id: excelProps.id.toString()}}

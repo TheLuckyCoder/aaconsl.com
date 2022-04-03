@@ -64,12 +64,12 @@ const data: ContactInfoProps[] = [
     {icon: <MapPin size={24}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
 ];
 
-function ContactInfoLabels() {
+function ContactInfoLabels(): JSX.Element {
     const labels = data.map((label) => <ContactInfoLabel {...label} key={label.label}/>);
     return <Group direction="column" noWrap={true}>{labels}</Group>;
 }
 
-// TODO Move map to the right
+// TODO Add contact form for email
 export default function Contact(): JSX.Element {
 
     return (
