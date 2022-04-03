@@ -16,7 +16,7 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }): J
         const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
         setColorScheme(nextColorScheme);
         // when color scheme is updated save it to cookie
-        setCookies('mantine-color-scheme', nextColorScheme, {maxAge: 60 * 60 * 24 * 30});
+        setCookies('mantine-color-scheme', nextColorScheme, {maxAge: 60 * 60 * 24 * 30, sameSite: true});
     };
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);

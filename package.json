@@ -11,10 +11,10 @@
     "start": "serve out"
   },
   "dependencies": {
-    "@mantine/core": "4.1.2",
-    "@mantine/form": "4.1.2",
-    "@mantine/hooks": "4.1.2",
-    "@mantine/next": "4.1.2",
+    "@mantine/core": "4.1.0",
+    "@mantine/form": "4.1.0",
+    "@mantine/hooks": "4.1.0",
+    "@mantine/next": "4.1.0",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
     "cookies-next": "2.0.4",
