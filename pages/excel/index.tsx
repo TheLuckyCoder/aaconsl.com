@@ -16,7 +16,7 @@ import {
 import {useRouter} from "next/router";
 import {ExcelProps} from "../../model/ExcelProps";
 
-function CardItem(excelProps: ExcelProps) {
+function CardItem(excelProps: ExcelProps): JSX.Element {
     const theme = useMantineTheme();
     const router = useRouter()
 
@@ -55,7 +55,7 @@ function CardItem(excelProps: ExcelProps) {
     );
 }
 
-export default function ExcelsList({list}) {
+export default function ExcelsList({list}): JSX.Element {
     return (
         <>
             <Head>

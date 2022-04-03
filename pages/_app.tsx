@@ -8,7 +8,7 @@ import {useHotkeys} from "@mantine/hooks";
 import {AppProps} from "next/app";
 import {GetServerSidePropsContext} from "next";
 
-export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
+export default function MyApp(props: AppProps & { colorScheme: ColorScheme }): JSX.Element {
     const {Component, pageProps} = props;
     const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 

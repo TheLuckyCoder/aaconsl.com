@@ -15,7 +15,6 @@ import {
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {AddressBook, At} from "tabler-icons-react";
-import * as https from "https";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -31,16 +30,10 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
         fileId, name, email, message
     }
 
-    const httpsAgent = new https.Agent({
-        rejectUnauthorized: false,
-    });
-
     const response = fetch("https://razvanrares.go.ro:4010/request", {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
-        // @ts-ignore
-        agent: httpsAgent,
     })
         .then(() => {
             return true
