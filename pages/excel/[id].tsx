@@ -143,6 +143,8 @@ export default function Excel({excelProps}): JSX.Element {
     return (<>
         <Title>{excelProps.name}</Title>
 
+        <Space h="xl"/>
+
         <Grid justify="center" columns={2}>
             <Grid.Col
                 xs={2}
@@ -184,7 +186,8 @@ export async function getStaticPaths() {
     const req = await fetch('https://server.aaconsl.com/excel/');
     const data: ExcelProps[] = await req.json();
 
-    data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
+    data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
+    data.reverse()
 
     const paths = data.map(excelProps => {
         return {params: {id: excelProps.id.toString()}}

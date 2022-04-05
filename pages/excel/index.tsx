@@ -1,59 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import {
-    AspectRatio,
-    Badge,
-    Button,
-    Card,
-    Group,
-    Image,
-    SimpleGrid,
-    Space,
-    Text,
-    Title,
-    useMantineTheme
-} from "@mantine/core";
-import {useRouter} from "next/router";
+import {SimpleGrid, Space, Text, Title} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
-
-function CardItem(excelProps: ExcelProps): JSX.Element {
-    const theme = useMantineTheme();
-    const router = useRouter()
-
-    const secondaryColor = theme.colorScheme === 'dark'
-        ? theme.colors.dark[1]
-        : theme.colors.gray[7];
-
-    return (
-        <div style={{width: 340, margin: 'auto'}}>
-            <Card shadow="xl" p="lg" radius="md">
-                <Card.Section>
-                    <AspectRatio ratio={1280 / 720}>
-                        <Image
-                            src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
-                            alt="" imageProps={{ "loading": "lazy" }}/>
-                    </AspectRatio>
-                </Card.Section>
-
-                <Group position="apart" style={{marginBottom: 5, marginTop: theme.spacing.sm}}>
-                    <Text weight={500}>{excelProps.name}</Text>
-                    <Badge color="pink" variant="light">
-                        {(new Date(excelProps.date)).toLocaleDateString('ro-RO')}
-                    </Badge>
-                </Group>
-
-                <Text size="sm" style={{color: secondaryColor, lineHeight: 1.5}}>
-                    {excelProps.summary}
-                </Text>
-
-                <Button variant="light" color="blue" fullWidth style={{marginTop: 14}}
-                        onClick={() => router.push("/excel/" + excelProps.id)}>
-                    Citește mai mult
-                </Button>
-            </Card>
-        </div>
-    );
-}
+import ExcelCardItem from "../../components/ExcelCardItem";
 
 export default function ExcelsList({list}): JSX.Element {
     return (
@@ -79,7 +28,7 @@ export default function ExcelsList({list}): JSX.Element {
                 ]}
             >
                 {list.map((excelProps) => {
-                    return (<CardItem {...excelProps} key={excelProps.id}/>);
+                    return (<ExcelCardItem {...excelProps} key={excelProps.id}/>);
                 })}
             </SimpleGrid>
 
@@ -91,7 +40,8 @@ export async function getStaticProps({}) {
     const req = await fetch('https://server.aaconsl.com/excel/');
     const data: ExcelProps[] = await req.json();
 
-    data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
+    data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
+    data.reverse()
 
     return {
         props: {list: data},
