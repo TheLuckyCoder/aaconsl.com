@@ -88,7 +88,7 @@ export default function ExcelsList({list}): JSX.Element {
 }
 
 export async function getStaticProps({}) {
-    const req = await fetch('http://razvanrares.go.ro:4009/excel/');
+    const req = await fetch('https://server.aaconsl.com/excel/');
     const data: ExcelProps[] = await req.json();
 
     data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
