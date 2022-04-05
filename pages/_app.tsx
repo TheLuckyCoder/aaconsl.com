@@ -29,6 +29,7 @@ export default function MyApp({Component, pageProps}): JSX.Element {
             <title>A&A Consult</title>
             <link rel="icon" href="/favicon.ico"/>
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
+            <meta name="description" content="" />
         </Head>
 
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>

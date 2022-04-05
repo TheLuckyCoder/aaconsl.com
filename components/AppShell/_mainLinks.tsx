@@ -1,5 +1,5 @@
 import React from 'react';
-import {FileSpreadsheet, Home, Mail} from 'tabler-icons-react';
+import {MdFilePresent, MdHome, MdMail} from 'react-icons/md';
 import {Group, Text, ThemeIcon, UnstyledButton} from '@mantine/core';
 import {useRouter} from "next/router";
 import styles from './MyAppShell.module.css'
@@ -43,9 +43,9 @@ function MainLink({icon, color, label, link}: MainLinkProps) {
 }
 
 const data = [
-    {icon: <Home size={20}/>, color: 'blue', label: 'Acasă', link: '/'},
-    {icon: <FileSpreadsheet size={20}/>, color: 'teal', label: 'Excel', link: '/excel'},
-    {icon: <Mail size={20}/>, color: 'orange', label: 'Contact', link: '/contact'},
+    {icon: <MdHome size={20}/>, color: 'blue', label: 'Acasă', link: '/'},
+    {icon: <MdFilePresent size={20}/>, color: 'teal', label: 'Excel', link: '/excel'},
+    {icon: <MdMail size={20}/>, color: 'orange', label: 'Contact', link: '/contact'},
 ];
 
 export default function MainLinks() {

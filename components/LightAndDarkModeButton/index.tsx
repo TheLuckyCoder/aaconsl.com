@@ -1,5 +1,5 @@
 import {ActionIcon, useMantineColorScheme} from "@mantine/core";
-import {MoonStars, Sun} from 'tabler-icons-react';
+import {MdDarkMode, MdLightMode} from 'react-icons/md';
 
 export default function LightAndDarkModeButton({}) {
     const {colorScheme, toggleColorScheme} = useMantineColorScheme();
@@ -13,7 +13,7 @@ export default function LightAndDarkModeButton({}) {
                 onClick={() => toggleColorScheme()}
                 title="Schimbă tema"
             >
-                {dark ? <Sun size={18}/> : <MoonStars size={18}/>}
+                {dark ? <MdLightMode size={18}/> : <MdDarkMode size={18}/>}
             </ActionIcon>
         </>
     )

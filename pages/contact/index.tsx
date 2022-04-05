@@ -1,7 +1,7 @@
-import {Group, SimpleGrid, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
+import {Group, SimpleGrid, Stack, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
 import React from "react";
 import {useClipboard} from "@mantine/hooks";
-import {Check, Copy, Mail, MapPin, Phone} from "tabler-icons-react";
+import {MdLibraryAddCheck, MdMail, MdPhone, MdLocationPin, MdOutlineContentCopy} from "react-icons/md";
 
 interface ContactInfoProps {
     icon: React.ReactNode;
@@ -12,10 +12,10 @@ interface ContactInfoProps {
 
 function CopyIcon({isCopied}): JSX.Element {
     if (isCopied) {
-        return (<Check size={18}/>);
+        return (<MdLibraryAddCheck size={18}/>);
     }
 
-    return (<Copy size={18}/>);
+    return (<MdOutlineContentCopy size={18}/>);
 }
 
 function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
@@ -59,14 +59,14 @@ function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
 }
 
 const data: ContactInfoProps[] = [
-    {icon: <Phone size={24}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
-    {icon: <Mail size={24}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
-    {icon: <MapPin size={24}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
+    {icon: <MdPhone size={24}/>, color: 'pink', label: 'Telefon', content: '+40747297093'},
+    {icon: <MdMail size={24}/>, color: 'blue', label: 'Email', content: 'customfilepro@gmail.com'},
+    {icon: <MdLocationPin size={24}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
 ];
 
 function ContactInfoLabels(): JSX.Element {
     const labels = data.map((label) => <ContactInfoLabel {...label} key={label.label}/>);
-    return <Group direction="column" noWrap={true}>{labels}</Group>;
+    return <Stack>{labels}</Stack>;
 }
 
 // TODO Add contact form for email

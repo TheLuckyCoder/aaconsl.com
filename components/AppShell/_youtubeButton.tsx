@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrandYoutube} from 'tabler-icons-react';
+import {RiYoutubeFill} from 'react-icons/ri';
 import {ActionIcon} from '@mantine/core';
 import styles from './MyAppShell.module.css'
 
@@ -11,7 +11,7 @@ export default function YoutubeButton() {
                 color='red'
                 title="Canalul de YouTube"
             >
-                <BrandYoutube size={18}/>
+                <RiYoutubeFill size={18}/>
             </ActionIcon>
         </a>
     )

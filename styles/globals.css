@@ -53,19 +53,6 @@ body::-webkit-scrollbar-thumb {
   margin-left: 1rem;
 }
 
-.fa-primary {
-  color: #ff7eee;
-}
-
-.fa-secondary {
-  color: #df49a6;
-}
-
-.fa-primary,
-.fa-secondary {
-  transition: var(--transition-speed);
-}
-
 .logo {
   font-weight: bold;
   text-transform: uppercase;
@@ -93,4 +80,21 @@ body::-webkit-scrollbar-thumb {
 
 .theme-icon {
   display: none;
+}
+
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
