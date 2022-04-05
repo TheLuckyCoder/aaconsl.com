@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "aaconsl",
   "private": true,
   "scripts": {
     "dev": "next dev",

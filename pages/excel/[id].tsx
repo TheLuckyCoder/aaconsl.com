@@ -30,7 +30,7 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
         fileId, name, email, message
     }
 
-    const response = fetch("https://razvanrares.go.ro:4010/request", {
+    const response = fetch("https://server.aaconsl.com/request", {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
@@ -172,7 +172,7 @@ export default function Excel({excelProps}): JSX.Element {
 }
 
 export async function getStaticProps({params}) {
-    const req = await fetch('http://razvanrares.go.ro:4009/excel/' + params.id);
+    const req = await fetch('https://server.aaconsl.com/excel/' + params.id);
     const data: ExcelProps = await req.json();
 
     return {
@@ -181,7 +181,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch('http://razvanrares.go.ro:4009/excel/');
+    const req = await fetch('https://server.aaconsl.com/excel/');
     const data: ExcelProps[] = await req.json();
 
     data.sort((a, b) => new Date(b.date).getUTCMilliseconds() - new Date(a.date).getUTCMilliseconds())
