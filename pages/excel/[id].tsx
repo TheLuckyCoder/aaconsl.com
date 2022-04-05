@@ -14,7 +14,7 @@ import {
 } from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
-import {AddressBook, At} from "tabler-icons-react";
+import {MdAlternateEmail, MdContactPage} from "react-icons/md";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -35,8 +35,8 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
     })
-        .then(() => {
-            return true
+        .then((res) => {
+            return res.ok
         })
         .catch(() => {
             return false;
@@ -84,7 +84,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
                             placeholder="Numele și prenumele dumneavoastră"
                             minLength={8}
                             maxLength={30}
-                            icon={<AddressBook size={14}/>}
+                            icon={<MdContactPage size={14}/>}
                             required
                         />
 
@@ -94,7 +94,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
                             {...form.getInputProps('email')}
                             placeholder="mail@example.com"
                             label="Adresă Email"
-                            icon={<At size={14}/>}
+                            icon={<MdAlternateEmail size={14}/>}
                             required
                         />
 

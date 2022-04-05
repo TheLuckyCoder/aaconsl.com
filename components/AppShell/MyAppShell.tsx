@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppShell, Group, Header, Title, Image} from '@mantine/core';
+import {AppShell, Group, Header, Title, Image, Footer} from '@mantine/core';
 import LightAndDarkModeButton from "../LightAndDarkModeButton";
 import MainLinks from "./_mainLinks";
 import YoutubeButton from "./_youtubeButton";
@@ -40,6 +40,17 @@ export default function MyAppShell({children}): JSX.Element {
                     </div>
                 </div>
             </Header>
+        }
+        footer={
+            <footer className="footer">
+                <a
+                    href="http://theluckycoder.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>. Copyright © 2022
+                </a>
+            </footer>
         }
     >
         {children}

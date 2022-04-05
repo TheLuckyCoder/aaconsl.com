@@ -21,16 +21,6 @@ export default function Home() {
                     <code className={styles.code}>pages/index.js</code>
                 </p>
             </main>
-
-            <footer className={styles.footer}>
-                <a
-                    href="http://theluckycoder.net"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>
-                </a>
-            </footer>
         </>
     )
 }
