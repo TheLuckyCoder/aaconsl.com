@@ -43,9 +43,9 @@ function MainLink({icon, color, label, link}: MainLinkProps) {
 }
 
 const data = [
-    {icon: <MdHome size={20}/>, color: 'blue', label: 'Acasă', link: '/'},
-    {icon: <MdFilePresent size={20}/>, color: 'teal', label: 'Excel', link: '/excel'},
-    {icon: <MdMail size={20}/>, color: 'orange', label: 'Contact', link: '/contact'},
+    {icon: <MdHome size={22}/>, color: 'blue', label: 'Acasă', link: '/'},
+    {icon: <MdFilePresent size={22}/>, color: 'teal', label: 'Excel', link: '/excel'},
+    {icon: <MdMail size={22}/>, color: 'orange', label: 'Contact', link: '/contact'},
 ];
 
 export default function MainLinks() {

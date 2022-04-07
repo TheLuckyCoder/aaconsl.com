@@ -43,12 +43,13 @@ export default function MyAppShell({children}): JSX.Element {
         }
         footer={
             <footer className="footer">
+
                 <a
                     href="http://theluckycoder.net"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>. Copyright © 2022
+                    <p>Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>. Copyright © 2022</p>
                 </a>
             </footer>
         }
