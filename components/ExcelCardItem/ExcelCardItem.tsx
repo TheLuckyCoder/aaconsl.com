@@ -18,6 +18,8 @@ export default function ExcelCardItem(excelProps: ExcelProps, showDate: boolean 
                     <AspectRatio ratio={1280 / 720}>
                         <Image
                             src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
+                            width={"100%"}
+                            height={"100%"}
                             alt="" imageProps={{ "loading": "lazy" }}/>
                     </AspectRatio>
                 </Card.Section>

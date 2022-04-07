@@ -3,9 +3,9 @@ import {
     AspectRatio,
     Box,
     Button,
-    Grid,
     Group,
     LoadingOverlay,
+    SimpleGrid,
     Space,
     Text,
     Textarea,
@@ -145,29 +145,22 @@ export default function Excel({excelProps}): JSX.Element {
 
         <Space h="xl"/>
 
-        <Grid justify="center" columns={2}>
-            <Grid.Col
-                xs={2}
-                sm={2}
-                md={2}
-                lg={1}
-            >
-                <Text weight={3} className={'display-linebreak'}>{excelProps.description}</Text>
-            </Grid.Col>
+        <SimpleGrid
+            cols={1}
+            spacing="xl"
+            breakpoints={[
+                {minWidth: 1200, cols: 2},
+            ]}
+        >
 
-            <Grid.Col
-                xs={2}
-                sm={2}
-                md={2}
-                lg={1}
-            >
-                <AspectRatio ratio={1980 / 1080}>
-                    <iframe id="ytplayer" width="100%" height="100%"
-                            src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
-                            frameBorder="0"></iframe>
-                </AspectRatio>
-            </Grid.Col>
-        </Grid>
+            <Text weight={3} className={'display-linebreak'}>{excelProps.description}</Text>
+
+            <AspectRatio ratio={16 / 9}>
+                <iframe id="ytplayer" width="100%" height="100%"
+                        src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
+                        frameBorder="0"></iframe>
+            </AspectRatio>
+        </SimpleGrid>
 
         <ContactForm {...excelProps} />
     </>)

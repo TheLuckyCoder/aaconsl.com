@@ -9,7 +9,7 @@ export default function YoutubeButton() {
             <ActionIcon
                 variant="filled"
                 color='red'
-                title="Canalul de YouTube"
+                title="Canal de YouTube"
             >
                 <RiYoutubeFill size={18}/>
             </ActionIcon>
