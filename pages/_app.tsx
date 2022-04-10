@@ -6,23 +6,16 @@ import {ColorScheme, ColorSchemeProvider, MantineProvider, Paper} from '@mantine
 import {useColorScheme, useLocalStorage} from "@mantine/hooks";
 
 export default function MyApp({Component, pageProps}): JSX.Element {
-    const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
-    const [localColorScheme, setLocalColorScheme] = useLocalStorage<ColorScheme>({
+    const [colorScheme, setLocalColorScheme] = useLocalStorage<ColorScheme>({
         key: 'color-scheme',
         defaultValue: useColorScheme(),
-        // getInitialValueInEffect: true,
+        getInitialValueInEffect: true,
     });
 
     const toggleColorScheme = (value?: ColorScheme) => {
-        const newValue = value || (localColorScheme === 'dark' ? 'light' : 'dark')
+        const newValue = value || (colorScheme === 'dark' ? 'light' : 'dark')
         setLocalColorScheme(newValue)
-        setColorScheme(newValue)
     }
-
-    useEffect(() => {
-        toggleColorScheme(localColorScheme);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     return (<>
         <Head>
@@ -39,7 +32,7 @@ export default function MyApp({Component, pageProps}): JSX.Element {
                 withNormalizeCSS
                 theme={{
                     fontFamily: 'Open Sans',
-                    colorScheme: localColorScheme
+                    colorScheme: colorScheme
                 }}
             >
                 <Paper>
