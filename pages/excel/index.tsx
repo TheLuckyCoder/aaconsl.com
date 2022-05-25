@@ -1,3 +1,4 @@
+
 import React from "react";
 import Head from "next/head";
 import {SimpleGrid, Space, Text, Title} from "@mantine/core";
