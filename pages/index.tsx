@@ -11,7 +11,9 @@ export default function Home({list}) {
                     <Image src="/aaconsl.webp" width={"100%"} height={"100%"} alt="A&A Consult"/>
                 </AspectRatio>
                 <h1 className={styles.title}>
-                    Bine ai venit la<br/><a color="#0070f3">A&A Consult</a>
+                </h1>
+                <h1 className={styles.title}>
+                    <a>Bine ai venit la<br/>A&A Consult</a>
                 </h1>
             </header>
 
@@ -21,7 +23,7 @@ export default function Home({list}) {
                 </p>
 
                 <p className={styles.description}>
-                    Dacă ești interesat în fișiere Excel care îți automatizează munca, pentru tine sau compania ta, nu ezita sa ne contactezi.
+                    Dacă ești interesat de fișiere Excel care îți automatizează munca, pentru tine sau compania ta, nu ezita sa ne contactezi.
                 </p>
 
                 <SimpleGrid
