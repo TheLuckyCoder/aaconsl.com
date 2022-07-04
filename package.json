@@ -11,10 +11,10 @@
     "start": "serve out"
   },
   "dependencies": {
-    "@mantine/core": "4.2.11",
-    "@mantine/form": "4.2.11",
-    "@mantine/hooks": "4.2.11",
-    "@mantine/next": "4.2.11",
+    "@mantine/core": "4.2.12",
+    "@mantine/form": "4.2.12",
+    "@mantine/hooks": "4.2.12",
+    "@mantine/next": "4.2.12",
     "@types/react": "17.0.47",
     "@types/react-dom": "17.0.17",
     "next": "12.2.0",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.23",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "eslint-config-next": "12.2.0"
   }
 }
