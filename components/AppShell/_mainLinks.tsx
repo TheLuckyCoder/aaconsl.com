@@ -1,6 +1,6 @@
 import React from 'react';
-import {MdFilePresent, MdHome, MdMail} from 'react-icons/md';
-import {Group, Text, ThemeIcon, UnstyledButton} from '@mantine/core';
+import {MdFilePresent, MdHome, MdHomeFilled, MdMail} from 'react-icons/md';
+import {Group, Text, ThemeIcon, UnstyledButton, useMantineTheme} from '@mantine/core';
 import {useRouter} from "next/router";
 import styles from './MyAppShell.module.css'
 
@@ -12,7 +12,8 @@ interface MainLinkProps {
 }
 
 function MainLink({icon, color, label, link}: MainLinkProps) {
-    const router = useRouter()
+    const router = useRouter();
+    const theme = useMantineTheme();
 
     return (
         <UnstyledButton
@@ -20,14 +21,12 @@ function MainLink({icon, color, label, link}: MainLinkProps) {
             sx={(theme) => ({
                 display: 'block',
                 width: '100%',
-                height: '70px',
+                height: '60px',
                 padding: theme.spacing.xs,
-                borderRadius: 0,
-                color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+                borderRadius: 8,
 
                 '&:hover': {
-                    backgroundColor:
-                        theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
+                    backgroundColor: '#155130',
                 },
             })}
         >
@@ -36,16 +35,16 @@ function MainLink({icon, color, label, link}: MainLinkProps) {
                     {icon}
                 </ThemeIcon>
 
-                <Text size="md" className={styles.mainLinksText}>{label}</Text>
+                <Text size="md" weight={1000} color={theme.white} className={styles.mainLinksText}>{label.toUpperCase()}</Text>
             </Group>
         </UnstyledButton>
     );
 }
 
 const data = [
-    {icon: <MdHome size={22}/>, color: 'blue', label: 'Acasă', link: '/'},
-    {icon: <MdFilePresent size={22}/>, color: 'teal', label: 'Excel', link: '/excel'},
-    {icon: <MdMail size={22}/>, color: 'orange', label: 'Contact', link: '/contact'},
+    {icon: <MdHomeFilled size={24}/>, color: 'blue', label: 'Acasă', link: '/'},
+    {icon: <MdFilePresent size={24}/>, color: 'teal', label: 'Excel', link: '/excel'},
+    {icon: <MdMail size={24}/>, color: 'orange', label: 'Contact', link: '/contact'},
 ];
 
 export default function MainLinks() {
