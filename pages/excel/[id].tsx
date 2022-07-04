@@ -2,19 +2,20 @@ import React, {useState} from "react";
 import {
     AspectRatio,
     Box,
-    Button,
-    Group,
+    Button, Card, Center, Container, Divider,
+    Group, Image,
     LoadingOverlay,
     SimpleGrid,
-    Space,
+    Space, Stack,
     Text,
     Textarea,
     TextInput,
-    Title
+    Title, useMantineTheme
 } from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {MdAlternateEmail, MdContactPage} from "react-icons/md";
+import {useRouter} from "next/router";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -140,12 +141,39 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
 export default function Excel({excelProps}): JSX.Element {
     const videoId = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
 
-    return (<>
-        <Title>{excelProps.name}</Title>
+    const theme = useMantineTheme();
 
+    const secondaryColor = theme.colorScheme === 'dark'
+        ? theme.colors.dark[1]
+        : theme.colors.gray[7];
+
+    return (<>
+        <Title align={"center"}>{excelProps.name}</Title>
+        <Space h="xl"/>
+        <Divider size="sm" variant="dashed"/>
         <Space h="xl"/>
 
-        <SimpleGrid
+        <Container fluid style={{padding: "6%"}}>
+            <Card
+                shadow="xl" p="xl" radius={0} withBorder>
+                <Card.Section>
+                    <AspectRatio ratio={16 / 9}>
+                        <iframe id="ytplayer" width="100%" height="100%"
+                                src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
+                                frameBorder="0"></iframe>
+                    </AspectRatio>
+                </Card.Section>
+
+                <Space h={"xl"}/>
+
+                <Stack spacing="lg" style={{display: "flex", minHeight: 200}}>
+                    <p style={{color: secondaryColor, lineHeight: 1.6, fontSize: "18px"}}>
+                        {excelProps.description}
+                    </p>
+                </Stack>
+            </Card>
+        </Container>
+        {/*<SimpleGrid
             cols={1}
             spacing="xl"
             breakpoints={[
@@ -160,7 +188,9 @@ export default function Excel({excelProps}): JSX.Element {
                         src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
                         frameBorder="0"></iframe>
             </AspectRatio>
-        </SimpleGrid>
+        </SimpleGrid>*/}
+
+        <Space h="xl"/>
 
         <ContactForm {...excelProps} />
     </>)
