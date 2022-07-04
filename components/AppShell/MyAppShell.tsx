@@ -9,8 +9,7 @@ export default function MyAppShell({children}): JSX.Element {
     return (<AppShell
         // navbarOffsetBreakpoint controls when navbar should no longer be offset with padding-left
         navbarOffsetBreakpoint="sm"
-        // fixed prop on AppShell will be automatically added to Header and Navbar
-        fixed
+        // fixed
         header={
             <Header height={90} p="md" style={{backgroundColor: '#1d6f42'}}>
                 {/* Handle other responsive styles with MediaQuery component or createStyles function */}
@@ -42,7 +41,6 @@ export default function MyAppShell({children}): JSX.Element {
         }
         footer={
             <footer className="footer">
-
                 <a
                     href="http://theluckycoder.net"
                     target="_blank"

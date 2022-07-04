@@ -16,7 +16,8 @@
 }
 
 .title a {
-  color: #0091ea;
+  color: white;
+  font-weight: bolder;
   text-decoration: none;
 }
 
@@ -27,21 +28,11 @@
 }
 
 .title {
-  margin: 0;
   padding-top: 1em;
   line-height: 1.15;
   font-size: 3.5rem;
-}
-
-.title,
-.description {
   text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.25;
-  font-size: 1.4rem;
+  margin: 0 0 1.5em;
 }
 
 .quote {
