@@ -65,24 +65,6 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
-.logo svg {
-  transform: rotate(0deg);
-  transition: var(--transition-speed);
-}
-
-.logo-text
-{
-  display: inline;
-  position: absolute;
-  left: -999px;
-  transition: var(--transition-speed);
-}
-
-.theme-icon {
-  display: none;
-}
-
-
 .footer {
   display: flex;
   flex: 1;

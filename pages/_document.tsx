@@ -9,7 +9,7 @@ export default class _Document extends Document {
 
     render(): JSX.Element {
         return (
-            <Html>
+            <Html lang={"ro"}>
                 <Head>
                     <link rel="icon" href="/favicon.ico"/>
 

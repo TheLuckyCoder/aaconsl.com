@@ -1,7 +1,7 @@
 
 import React from "react";
 import Head from "next/head";
-import {SimpleGrid, Space, Text, Title} from "@mantine/core";
+import {Divider, SimpleGrid, Space, Text, Title} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import ExcelCardItem from "../../components/ExcelCardItem";
 
@@ -15,17 +15,20 @@ export default function ExcelsList({list}): JSX.Element {
 
             <Title>Fișiere Excel</Title>
 
+            <Space h="md" />
+
             <Text>Pentru a primi un fișier de mai jos, accesați formularul de pe pagina acestuia.</Text>
 
-            <Space h="md"/>
+            <Divider my="md" variant="dashed" />
+
+            <Space h="sm" />
 
             <SimpleGrid
                 cols={1}
                 breakpoints={[
-                    {minWidth: 1800, cols: 5},
-                    {minWidth: 1480, cols: 4},
-                    {minWidth: 1100, cols: 3},
-                    {minWidth: 740, cols: 2},
+                    {minWidth: 1750, cols: 4},
+                    {minWidth: 1320, cols: 3},
+                    {minWidth: 900, cols: 2},
                 ]}
             >
                 {list.map((excelProps) => {

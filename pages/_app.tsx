@@ -31,7 +31,8 @@ export default function MyApp({Component, pageProps}): JSX.Element {
                 withNormalizeCSS
                 theme={{
                     fontFamily: 'Open Sans, sans-serif',
-                    colorScheme: colorScheme
+                    colorScheme: colorScheme,
+                    primaryColor: 'green'
                 }}
             >
                 <Paper>
