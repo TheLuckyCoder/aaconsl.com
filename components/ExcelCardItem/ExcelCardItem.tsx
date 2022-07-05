@@ -12,14 +12,14 @@ export default function ExcelCardItem(excelProps: ExcelProps): JSX.Element {
         : theme.colors.gray[7];
 
     return (
-        <div style={{width: 400, margin: 'auto', height: "100%", paddingBottom: 16, offset: "20px"}}
+        <div style={{maxWidth: 400, margin: 'auto', height: "100%", paddingBottom: 16, offset: "20px"}}
              onClick={() => router.push("/excel/" + excelProps.id)}>
             <Card
                 shadow="xl" p="lg" radius="sm"
-                style={{height: 460, transition: 'margin .3s ease-in-out'}}
+                style={{height: 460, transition: 'margin .4s ease-in-out'}}
                 sx={() => ({
                     '&:hover': {
-                        marginTop: -3,
+                        marginTop: -4,
                     },
                 })}>
                 <Card.Section>

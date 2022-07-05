@@ -64,7 +64,6 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
     return (
         <Box sx={{maxWidth: 600}} mx="auto">
             <Space h="xl"/>
-            <Space h="xl"/>
 
             {(requestState == FileRequestState.None || requestState == FileRequestState.Loading) &&
                 <>
@@ -148,6 +147,7 @@ export default function Excel({excelProps}): JSX.Element {
         : theme.colors.gray[7];
 
     return (<>
+        <Space h="xl"/>
         <Title align={"center"}>{excelProps.name}</Title>
         <Space h="xl"/>
         <Divider size="sm" variant="dashed"/>
@@ -167,7 +167,7 @@ export default function Excel({excelProps}): JSX.Element {
                 <Space h={"xl"}/>
 
                 <Stack spacing="lg" style={{display: "flex", minHeight: 200}}>
-                    <p style={{color: secondaryColor, lineHeight: 1.6, fontSize: "18px"}}>
+                    <p className={'display-linebreak'} style={{color: secondaryColor, lineHeight: 1.6, fontSize: "18px"}}>
                         {excelProps.description}
                     </p>
                 </Stack>
