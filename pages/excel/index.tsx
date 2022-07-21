@@ -41,7 +41,7 @@ export default function ExcelsList({list}): JSX.Element {
 }
 
 export async function getStaticProps({}) {
-    const req = await fetch('https://server.aaconsl.com/excel/');
+    const req = await fetch('https://server.aaconsl.com/aaconsl/excel/');
     const data: ExcelProps[] = await req.json();
 
     data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
