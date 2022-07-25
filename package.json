@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@mantine/core": "4.2.12",
-    "@mantine/form": "4.2.12",
+    "@mantine/form": "5.0.0",
     "@mantine/hooks": "4.2.12",
     "@mantine/next": "4.2.12",
     "@types/react": "17.0.47",
