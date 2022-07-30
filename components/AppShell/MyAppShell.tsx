@@ -1,9 +1,8 @@
 import React from 'react';
-import {AppShell, Group, Header, Title, Image, Footer, Center, Container} from '@mantine/core';
+import {AppShell, Container, Group, Header, Image} from '@mantine/core';
 import LightAndDarkModeButton from "../LightAndDarkModeButton";
 import MainLinks from "./_mainLinks";
 import YoutubeButton from "./_youtubeButton";
-import styles from './MyAppShell.module.css'
 
 export default function MyAppShell({children}): JSX.Element {
     return (<AppShell
