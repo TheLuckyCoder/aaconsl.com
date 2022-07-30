@@ -3,6 +3,7 @@ import {MdFilePresent, MdHome, MdHomeFilled, MdMail} from 'react-icons/md';
 import {Group, Text, ThemeIcon, UnstyledButton, useMantineTheme} from '@mantine/core';
 import {useRouter} from "next/router";
 import styles from './MyAppShell.module.css'
+import Link from "next/link";
 
 interface MainLinkProps {
     icon: React.ReactNode;
@@ -12,32 +13,33 @@ interface MainLinkProps {
 }
 
 function MainLink({icon, color, label, link}: MainLinkProps) {
-    const router = useRouter();
     const theme = useMantineTheme();
 
     return (
-        <UnstyledButton
-            onClick={() => router.push(link)}
-            sx={(theme) => ({
-                display: 'block',
-                width: '100%',
-                height: '60px',
-                padding: theme.spacing.xs,
-                borderRadius: 8,
+        <Link href={link} passHref={true}>
+            <UnstyledButton
+                sx={(theme) => ({
+                    display: 'block',
+                    width: '100%',
+                    height: '60px',
+                    padding: theme.spacing.xs,
+                    borderRadius: 8,
 
-                '&:hover': {
-                    backgroundColor: '#155130',
-                },
-            })}
-        >
-            <Group noWrap={true}>
-                <ThemeIcon color={color} size="lg">
-                    {icon}
-                </ThemeIcon>
+                    '&:hover': {
+                        backgroundColor: '#155130',
+                    },
+                })}
+            >
+                <Group noWrap={true}>
+                    <ThemeIcon color={color} size="lg">
+                        {icon}
+                    </ThemeIcon>
 
-                <Text size="md" weight={1000} color={theme.white} className={styles.mainLinksText}>{label.toUpperCase()}</Text>
-            </Group>
-        </UnstyledButton>
+                    <Text size="md" weight={1000} color={theme.white}
+                          className={styles.mainLinksText}>{label.toUpperCase()}</Text>
+                </Group>
+            </UnstyledButton>
+        </Link>
     );
 }
 
