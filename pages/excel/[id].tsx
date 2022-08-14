@@ -2,20 +2,23 @@ import React, {useState} from "react";
 import {
     AspectRatio,
     Box,
-    Button, Card, Center, Container, Divider,
-    Group, Image,
+    Button,
+    Card,
+    Container,
+    Divider,
+    Group,
     LoadingOverlay,
-    SimpleGrid,
-    Space, Stack,
+    Space,
+    Stack,
     Text,
     Textarea,
     TextInput,
-    Title, useMantineTheme
+    Title,
+    useMantineTheme
 } from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {MdAlternateEmail, MdContactPage} from "react-icons/md";
-import {useRouter} from "next/router";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -173,22 +176,6 @@ export default function Excel({excelProps}): JSX.Element {
                 </Stack>
             </Card>
         </Container>
-        {/*<SimpleGrid
-            cols={1}
-            spacing="xl"
-            breakpoints={[
-                {minWidth: 1200, cols: 2},
-            ]}
-        >
-
-            <Text weight={3} className={'display-linebreak'}>{excelProps.description}</Text>
-
-            <AspectRatio ratio={16 / 9}>
-                <iframe id="ytplayer" width="100%" height="100%"
-                        src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
-                        frameBorder="0"></iframe>
-            </AspectRatio>
-        </SimpleGrid>*/}
 
         <Space h="xl"/>
 
@@ -206,7 +193,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch('https://server.aaconsl.com/aaconsl/excel/');
+    const req = await fetch('https://server.aaconsl.com/aaconsl/excel');
     const data: ExcelProps[] = await req.json();
 
     data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
