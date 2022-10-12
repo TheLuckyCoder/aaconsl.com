@@ -7,7 +7,7 @@ import {
     Container,
     Divider,
     Group,
-    LoadingOverlay,
+    LoadingOverlay, Paper,
     Space,
     Stack,
     Text,
@@ -62,13 +62,14 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
         validate: {
             email: (value) => value.toLowerCase().match(REGEX_EMAIL) ? null : "Email invalid",
         },
+        validateInputOnBlur: true,
     });
 
     return (
         <Box sx={{maxWidth: 600}} mx="auto">
             <Space h="xl"/>
 
-            {(requestState == FileRequestState.None || requestState == FileRequestState.Loading) &&
+            {requestState != FileRequestState.Success &&
                 <>
                     <Text>Dacă doriți acces la acest fișier vă rugăm să ne contactați folosind formularul de mai
                         jos:</Text>
@@ -127,12 +128,22 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
             }
 
             {requestState == FileRequestState.Success &&
-                <Text>Formularul a fost trimis și înregistrat cu succes!</Text>
+                <Paper shadow={"0"} p={"md"} sx={(theme) => ({
+                    backgroundColor: theme.colors.green,
+                    margin: theme.spacing.sm,
+                })}>
+                    <Text align={"center"} color="#FFF">Formularul a fost trimis, veți fi contactat pe email  cât de curând!</Text>
+                </Paper>
             }
 
             {requestState == FileRequestState.Failed &&
-                <Text color='red'>A aparut o eroare în procesarea formularului, vă rugam să încercați din nou mai târziu
-                    sau să ne contactați prin Email dacă problema persistă</Text>
+                <Paper shadow={"0"} p={"md"} sx={(theme) => ({
+                    backgroundColor: theme.colors.red,
+                    margin: theme.spacing.sm,
+                })}>
+                    <Text align={"center"} color="#FFF">A apărut o eroare în trimiterea formularului, vă rugam să încercați din nou mai târziu
+                        sau să ne contactați direct prin email dacă problema persistă</Text>
+                </Paper>
             }
 
             <Space h="xl"/>
@@ -140,7 +151,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
     )
 }
 
-export default function Excel({excelProps}): JSX.Element {
+export default function ExcelFile({excelProps}): JSX.Element {
     const videoId = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
 
     const theme = useMantineTheme();
@@ -156,7 +167,19 @@ export default function Excel({excelProps}): JSX.Element {
         <Divider size="sm" variant="dashed"/>
         <Space h="xl"/>
 
-        <Container fluid style={{padding: "6%"}}>
+        <Container px={0} fluid sx={(theme) => ({
+            margin: theme.spacing.xl,
+            '@media (max-width: 900px)': {
+                margin: theme.spacing.sm,
+            },
+            '@media (max-width: 750px)': {
+                margin: theme.spacing.xs,
+            },
+            '@media (max-width: 600px)': {
+                margin: 0,
+            }
+
+        })}>
             <Card
                 shadow="xl" p="xl" radius={0} withBorder>
                 <Card.Section>
