@@ -19,6 +19,8 @@ import {
 import {ExcelProps} from "../../model/ExcelProps";
 import {useForm} from "@mantine/form";
 import {MdAlternateEmail, MdContactPage} from "react-icons/md";
+import Head from "next/head";
+import {getEmbedUrl, getThumbnailUrl, getVideoId} from "../../utils/youtube";
 
 const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}])|(([a-zA-Z\-\d]+\.)+[a-zA-Z]{2,}))$/
 
@@ -152,7 +154,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
 }
 
 export default function ExcelFile({excelProps}): JSX.Element {
-    const videoId = excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "")
+    const videoId = getVideoId(excelProps.youtubeUrl);
 
     const theme = useMantineTheme();
 
@@ -161,6 +163,17 @@ export default function ExcelFile({excelProps}): JSX.Element {
         : theme.colors.gray[7];
 
     return (<>
+        <Head>
+            <title>{excelProps.name}</title>
+            <meta property="og:url" content={"https://aaconsl.com/excel/" + excelProps.id} key="og_url"/>
+            <meta property="og:title" content={excelProps.name} key="og_title"/>
+            <meta property="og:description" content={excelProps.description} key="og_description"/>
+            <meta property="og:image" content={getThumbnailUrl(videoId)} key="og_image"/>
+            <meta property="og:video" content={excelProps.youtubeUrl} key="og_video"/>
+            <meta property="og:locale" content="ro_RO" key="og_lang"/>
+            <meta property="og:site_name" content="A&A Consult" key="og_site_name"/>
+        </Head>
+
         <Space h="xl"/>
         <Title align={"center"}>{excelProps.name}</Title>
         <Space h="xl"/>
@@ -184,9 +197,7 @@ export default function ExcelFile({excelProps}): JSX.Element {
                 shadow="xl" p="xl" radius={0} withBorder>
                 <Card.Section>
                     <AspectRatio ratio={16 / 9}>
-                        <iframe id="ytplayer" width="100%" height="100%"
-                                src={"https://www.youtube.com/embed/" + videoId + "?origin=https://aaconsl.com"}
-                                frameBorder="0"></iframe>
+                        <iframe id="ytplayer" width="100%" height="100%" src={getEmbedUrl(videoId)} frameBorder="0"></iframe>
                     </AspectRatio>
                 </Card.Section>
 

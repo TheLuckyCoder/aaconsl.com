@@ -1,10 +1,11 @@
 import {ExcelProps} from "../../model/ExcelProps";
 import {AspectRatio, Card, Image, Space, Stack, Text, useMantineTheme} from "@mantine/core";
-import {useRouter} from "next/router";
 import React from "react";
 import Link from "next/link";
+import {getThumbnailUrl, getVideoId} from "../../utils/youtube";
 
 export default function ExcelCardItem(excelProps: ExcelProps): JSX.Element {
+    const videoId = getVideoId(excelProps.youtubeUrl)
     const theme = useMantineTheme();
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -25,7 +26,7 @@ export default function ExcelCardItem(excelProps: ExcelProps): JSX.Element {
                     <Card.Section>
                         <AspectRatio ratio={16 / 9}>
                             <Image
-                                src={"https://i.ytimg.com/vi/" + excelProps.youtubeUrl.replace("https://www.youtube.com/watch?v=", "") + "/hqdefault.jpg"}
+                                src={getThumbnailUrl(videoId)}
                                 width="340"
                                 height="255"
                                 alt="" imageProps={{"loading": "lazy"}}/>
