@@ -10,7 +10,6 @@ export default function ExcelsList({list}): JSX.Element {
         <>
             <Head>
                 <title>Fișiere Excel - A&A Consult</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
             </Head>
 
             <Title>Fișiere Excel</Title>
