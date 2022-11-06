@@ -14,7 +14,7 @@ export default function ExcelCardItem(excelProps: ExcelProps): JSX.Element {
 
     return (
         <div style={{maxWidth: 400, margin: 'auto', height: "100%", paddingBottom: 16, offset: "20px"}}>
-            <Link href={"/excel/" + excelProps.id} passHref={true} prefetch={false}>
+            <Link href={"/excel/" + excelProps.id} passHref={true}>
                 <Card
                     shadow="xl" p="lg" radius="sm"
                     style={{height: 460, transition: 'margin .4s ease-in-out'}}
