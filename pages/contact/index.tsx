@@ -44,7 +44,7 @@ function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
                 })}
             >
                 <Group noWrap={true}>
-                    <ThemeIcon size="lg" color={props.color} variant="light">
+                    <ThemeIcon size="xl" color={props.color} variant="light">
                         {props.icon}
                     </ThemeIcon>
 
