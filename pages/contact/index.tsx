@@ -1,7 +1,7 @@
-import {Group, SimpleGrid, Stack, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
+import {Center, Group, Stack, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
 import React from "react";
 import {useClipboard} from "@mantine/hooks";
-import {MdLibraryAddCheck, MdMail, MdPhone, MdLocationPin, MdOutlineContentCopy} from "react-icons/md";
+import {MdLibraryAddCheck, MdLocationPin, MdMail, MdOutlineContentCopy, MdPhone} from "react-icons/md";
 
 interface ContactInfoProps {
     icon: React.ReactNode;
@@ -69,22 +69,11 @@ function ContactInfoLabels(): JSX.Element {
     return <Stack>{labels}</Stack>;
 }
 
-// TODO Add contact form for email
 export default function Contact(): JSX.Element {
 
     return (
-        <SimpleGrid
-            cols={1}
-            spacing="xl"
-            breakpoints={[
-                {minWidth: 1260, cols: 2, spacing: 'md'},
-            ]}>
+        <Center p="xl">
             <ContactInfoLabels/>
-
-            <div style={{maxWidth: 680}}>
-                <iframe width="98%" height="450" loading="lazy" allowFullScreen
-                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJje84s3lnTEcRjxhlSaAPMY0&key=AIzaSyDhyDBFfYNit3dLA9sfF1PWvt48T6jFpuc"></iframe>
-            </div>
-        </SimpleGrid>
+        </Center>
     );
 }

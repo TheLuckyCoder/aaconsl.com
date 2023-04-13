@@ -26,9 +26,10 @@ export default function ExcelCardItem(excelProps: ExcelProps): JSX.Element {
                     <Card.Section>
                         <AspectRatio ratio={16 / 9}>
                             <Image
+                                fit={"contain"}
                                 src={getThumbnailUrl(videoId)}
-                                width="340"
-                                height="255"
+                                width="100%"
+                                height="360"
                                 alt="" imageProps={{"loading": "lazy"}}/>
                         </AspectRatio>
                     </Card.Section>
