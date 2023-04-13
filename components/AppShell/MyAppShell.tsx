@@ -45,7 +45,7 @@ export default function MyAppShell({children}): JSX.Element {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <p>Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>. Copyright © 2022</p>
+                    <p>Website realizat de&nbsp;<b>Filea Răzvan Gheorghe</b>. Copyright © {new Date().getFullYear()}</p>
                 </a>
             </footer>
         }
