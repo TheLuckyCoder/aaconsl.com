@@ -17,6 +17,8 @@ export default class _Document extends Document {
                         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap"
                         rel="stylesheet"
                     />
+
+                    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
                 </Head>
                 <body>
                 <Main/>
