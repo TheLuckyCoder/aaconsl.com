@@ -37,7 +37,7 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
     }
 
     const response = fetch("https://server.aaconsl.com/aaconsl/request", {
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
     })
