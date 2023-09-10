@@ -144,7 +144,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
                     margin: theme.spacing.sm,
                 })}>
                     <Text align={"center"} color="#FFF">A apărut o eroare în trimiterea formularului, vă rugam să încercați din nou mai târziu
-                        sau să ne contactați direct prin email dacă problema persistă</Text>
+                        sau să ne contactați direct prin email la <b>customfilepro@gmail.com</b> dacă problema persistă</Text>
                 </Paper>
             }
 

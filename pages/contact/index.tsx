@@ -1,5 +1,5 @@
 import {Center, Group, Stack, Text, ThemeIcon, Tooltip, UnstyledButton} from "@mantine/core";
-import React from "react";
+import React, {ReactElement} from "react";
 import {useClipboard} from "@mantine/hooks";
 import {MdLibraryAddCheck, MdLocationPin, MdMail, MdOutlineContentCopy, MdPhone} from "react-icons/md";
 
@@ -10,7 +10,7 @@ interface ContactInfoProps {
     content: string;
 }
 
-function CopyIcon({isCopied}): JSX.Element {
+function CopyIcon({isCopied}): ReactElement {
     if (isCopied) {
         return (<MdLibraryAddCheck size={18}/>);
     }
@@ -18,7 +18,7 @@ function CopyIcon({isCopied}): JSX.Element {
     return (<MdOutlineContentCopy size={18}/>);
 }
 
-function ContactInfoLabel(props: ContactInfoProps): JSX.Element {
+function ContactInfoLabel(props: ContactInfoProps): ReactElement {
     const clipboard = useClipboard({timeout: 4000});
 
     return (
@@ -64,12 +64,12 @@ const data: ContactInfoProps[] = [
     {icon: <MdLocationPin size={24}/>, color: 'red', label: 'Locație', content: 'Sibiu, Str. Calțun Nr. 15, 550298'}
 ];
 
-function ContactInfoLabels(): JSX.Element {
+function ContactInfoLabels(): ReactElement {
     const labels = data.map((label) => <ContactInfoLabel {...label} key={label.label}/>);
     return <Stack>{labels}</Stack>;
 }
 
-export default function Contact(): JSX.Element {
+export default function Contact(): ReactElement {
 
     return (
         <Center p="xl">
