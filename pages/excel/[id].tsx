@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ReactElement, useState} from "react";
 import {
     AspectRatio,
     Box,
@@ -144,7 +144,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
                     margin: theme.spacing.sm,
                 })}>
                     <Text align={"center"} color="#FFF">A apărut o eroare în trimiterea formularului, vă rugam să încercați din nou mai târziu
-                        sau să ne contactați direct prin email la <b>customfilepro@gmail.com</b> dacă problema persistă</Text>
+                        sau să ne contactați direct prin email la customfilepro@gmail.com dacă problema persistă</Text>
                 </Paper>
             }
 
@@ -153,7 +153,7 @@ function ContactForm(excelProps: ExcelProps): JSX.Element {
     )
 }
 
-export default function ExcelFile({excelProps}): JSX.Element {
+export default function ExcelFile({excelProps}): ReactElement {
     const videoId = getVideoId(excelProps.youtubeUrl);
 
     const theme = useMantineTheme();
