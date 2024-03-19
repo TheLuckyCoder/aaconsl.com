@@ -8,6 +8,7 @@ import {useMediaQuery} from "@mantine/hooks";
 import mainBackground_3_2 from '../public/main_background_3_2.svg'
 import mainBackground_2_3 from '../public/main_background_2_3.svg'
 import mainBackground_9_16 from '../public/main_background_9_16.svg'
+import {getThumbnailUrl, getVideoId} from "../utils/youtube";
 
 const mainBackgroundStyle_3_2 = {
     backgroundImage: `url('${mainBackground_3_2.src}')`,
@@ -35,7 +36,11 @@ const mainBackgroundStyle_9_16 = {
     backgroundSize: "cover",
 }
 
-export default function Home({list}) {
+interface IParams {
+    list: ExcelProps[]
+}
+
+export default function Home({list}: IParams) {
     const max_aspect_3_2 = useMediaQuery('(max-aspect-ratio: 3/2)', false);
     const min_aspect_2_3 = useMediaQuery('(min-aspect-ratio: 2/3)', false);
 
@@ -85,8 +90,14 @@ export async function getStaticProps({}) {
     const req = await fetch('https://server.aaconsl.com/aaconsl/excel');
     const data: ExcelProps[] = await req.json();
 
-    data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
-    data.reverse()
+    for (const item of data) {
+        const videoId = getVideoId(item.youtubeUrl);
+        const thumbnail_response = await fetch(getThumbnailUrl(videoId));
+        if (thumbnail_response.status == 200)
+            item.thumbnailUrl = getThumbnailUrl(videoId, "maxresdefault")
+        else
+            item.thumbnailUrl = getThumbnailUrl(videoId, "hqdefault")
+    }
 
     return {
         props: {list: data.slice(0, 4)},

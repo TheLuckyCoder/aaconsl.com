@@ -6,4 +6,5 @@ export interface ExcelProps {
     description: string;
     date: string;
     youtubeUrl: string;
+    thumbnailUrl?: string;
 }

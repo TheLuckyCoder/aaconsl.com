@@ -1,11 +1,11 @@
-
-import React from "react";
+import React, {ReactElement} from "react";
 import Head from "next/head";
 import {Divider, SimpleGrid, Space, Text, Title} from "@mantine/core";
 import {ExcelProps} from "../../model/ExcelProps";
 import ExcelCardItem from "../../components/ExcelCardItem";
+import {getThumbnailUrl, getVideoId} from "../../utils/youtube";
 
-export default function ExcelsList({list}): JSX.Element {
+export default function ExcelsList({list}): ReactElement {
     return (
         <>
             <Head>
@@ -43,8 +43,14 @@ export async function getStaticProps({}) {
     const req = await fetch('https://server.aaconsl.com/aaconsl/excel');
     const data: ExcelProps[] = await req.json();
 
-    data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
-    data.reverse()
+    for (const item of data) {
+        const videoId = getVideoId(item.youtubeUrl);
+        const thumbnail_response = await fetch(getThumbnailUrl(videoId));
+        if (thumbnail_response.status == 200)
+            item.thumbnailUrl = getThumbnailUrl(videoId, "maxresdefault")
+        else
+            item.thumbnailUrl = getThumbnailUrl(videoId, "hqdefault")
+    }
 
     return {
         props: {list: data},
