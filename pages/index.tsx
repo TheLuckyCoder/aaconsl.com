@@ -87,7 +87,7 @@ export default function Home({list}: IParams) {
 }
 
 export async function getStaticProps({}) {
-    const req = await fetch('https://server.aaconsl.com/aaconsl/excel');
+    const req = await fetch('https://server.aaconsl.com/excel');
     const data: ExcelProps[] = await req.json();
 
     for (const item of data) {

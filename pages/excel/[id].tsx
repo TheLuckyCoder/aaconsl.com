@@ -36,7 +36,7 @@ async function sendContactRequest(fileId: number, {name, email, message}): Promi
         fileId, name, email, message
     }
 
-    const response = fetch("https://server.aaconsl.com/aaconsl/request", {
+    const response = fetch("https://server.aaconsl.com/request", {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {'Content-Type': 'application/json'},
@@ -218,7 +218,7 @@ export default function ExcelFile({excelProps}): ReactElement {
 }
 
 export async function getStaticProps({params}) {
-    const req = await fetch('https://server.aaconsl.com/aaconsl/excel/' + params.id);
+    const req = await fetch('https://server.aaconsl.com/excel/' + params.id);
     const data: ExcelProps = await req.json();
 
     return {
@@ -227,7 +227,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch('https://server.aaconsl.com/aaconsl/excel');
+    const req = await fetch('https://server.aaconsl.com/excel');
     const data: ExcelProps[] = await req.json();
 
     data.sort((a, b) => new Date(a.date).getMilliseconds() - new Date(b.date).getMilliseconds())
